@@ -1,0 +1,40 @@
+<div class="pages">
+	<div data-page="shop" class="page no-toolbar no-navbar">
+		<div class="page-content">
+			<div class="navbarpages">
+				<div class="navbar_left"><a href="#" onclick="cargaPagina('index.html',0);"><img src="images/icons/blue/menu.png" alt="" title="" /></a></div>
+				<div class="navbar_center"><h2><a href="#" onclick="cargaPagina('index.html',0);"><img class="header-logo" src="images/logo.png" alt="waoo" /></a></h2></div>
+				<div class="navbar_right"><a href="#" data-panel="right" class="open-panel"><img src="images/icons/blue/user.png" alt="" title="" /></a></div>
+			</div>
+			<div id="pages_maincontent">
+				<h2 class="page_title">Mis solicitudes</h2>
+				<div class="page_content">
+					<div id="detalletext" class="mimodal">
+						<div class = "modal-header">
+							<button type='button' class='close' aria-label='close' onclick='$("#detalletext").hide();'>&times;</button>
+						</div>
+						<div id="detalletext-cnt" class = "modal-body"></div>
+					</div>
+					<div id="listarsols"></div>
+					<div id='ofertas'></div>
+				</div>
+			</div>
+			<div class="modal fade" id="soldet" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Detalle solicitud</h4>
+			      </div>
+			      <div class="modal-body soldet__body">
+			        <p>Some text in the modal.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
