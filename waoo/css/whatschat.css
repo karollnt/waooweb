@@ -231,16 +231,13 @@ and (min-device-width : 375px)
 and (max-device-width : 667px) {
   html,body{
     height: 100%;
-   
-   -webkit-border-radius: 10px;
-
-    
+    -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
-      height: auto;
+    position: fixed;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
-      height: 95%;
+    height: 95%;
   }
 }
 @media only screen
@@ -248,16 +245,13 @@ and (min-device-width : 750px)
 and (max-device-width : 1334px) {
   html,body{
     height: 100%;
-   
-   -webkit-border-radius: 10px;
-
-    
+    -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
-      height: auto;
+    height: auto;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
-      height: 95%;
+    height: 95%;
   }
 }
 @media only screen
@@ -265,13 +259,12 @@ and (min-device-width : 1242px)
 and (max-device-width : 2208px) {
   html,body{
     height: 100%;
-     -webkit-border-radius: 10px;
-   
+    -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
-      height: auto;
+    height: auto;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
-      height: 95%;
+    height: 95%;
   }
 }
