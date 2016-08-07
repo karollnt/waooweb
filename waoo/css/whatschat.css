@@ -254,7 +254,7 @@ and (max-device-width : 1334px) {
 }
 @media only screen
 and (min-device-width : 1242px)
-and (max-device-width : 2207px) {
+and (max-device-width : 2208px) {
   body{
     -webkit-text-size-adjust:none;
   }
