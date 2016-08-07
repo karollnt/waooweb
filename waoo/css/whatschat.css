@@ -236,9 +236,11 @@ and (max-device-width : 667px) {
   .chat_submit_box {
     position: fixed;
     height: auto;
+    z-index: 9;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
     height: 95%;
+    z-index: 1;
   }
 }
 @media only screen
@@ -251,9 +253,11 @@ and (max-device-width : 1334px) {
   .chat_submit_box {
     position: fixed;
     height: auto;
+    z-index: 9;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
     height: 95%;
+    z-index: 1;
   }
 }
 @media only screen
@@ -266,8 +270,10 @@ and (max-device-width : 2208px) {
   .chat_submit_box {
     position: fixed;
     height: auto;
+    z-index: 9;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
     height: 95%;
+    z-index: 1;
   }
 }
