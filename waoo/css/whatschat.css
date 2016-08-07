@@ -231,7 +231,7 @@ and (min-device-width : 375px)
 and (max-device-width : 667px) {
   html,body{
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .chat_submit_box {
@@ -246,7 +246,7 @@ and (min-device-width : 750px)
 and (max-device-width : 1334px) {
   html,body{
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .chat_submit_box {
@@ -261,7 +261,7 @@ and (min-device-width : 1242px)
 and (max-device-width : 2208px) {
   html,body{
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .chat_submit_box {
