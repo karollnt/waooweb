@@ -235,6 +235,7 @@ and (max-device-width : 667px) {
   }
   .chat_submit_box {
     position: fixed;
+    height: auto;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
     height: 95%;
@@ -248,6 +249,7 @@ and (max-device-width : 1334px) {
     -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
+    position: fixed;
     height: auto;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
@@ -262,6 +264,7 @@ and (max-device-width : 2208px) {
     -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
+    position: fixed;
     height: auto;
   }
   .chat_box_wrapper.chat_box_small.chat_box_active {
