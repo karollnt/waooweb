@@ -47,12 +47,17 @@ a:focus {
     padding: 0 6px;
 }
 .chat_box_wrapper.chat_box_small.chat_box_active {
-    height: 90%;
-    overflow-y: scroll;
     width: 100% !important;
 }
 .chat_box {
-    padding: 16px;
+    padding:0 16px;
+    overflow-y:auto;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin-bottom:60px;
 }
 .chat_box .chat_message_wrapper::after {
     clear: both;
@@ -251,7 +256,6 @@ and (max-device-width : 1334px) {
     -webkit-text-size-adjust:none;
   }
   .chat_submit_box {
-    position: fixed;
     height: auto;
     z-index: 9;
   }
