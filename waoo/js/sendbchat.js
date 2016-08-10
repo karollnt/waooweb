@@ -1,12 +1,11 @@
 'use strict';
 var misendbird = (function () {
-  var apiToken = '7ba731169f7de777d71e1b613426ebe63c1efe5f';
-  var appId = 'A46AFE6E-E876-482B-BBAF-F736F7D02AFD';
+  var apiToken = '99fd7bd7103f83c072ba46523572c2defd0dbee9';
+  var appId = '10089199-90A1-4BBC-BC0F-B66F191282A0';
   var assistantId = '';
   var channelChat = '';
   var privUrl = '';
-  //var privUrl = 'sendbird_group_messaging_6302035_d737810ab733dd2e846f4d36d4814e0b4c93431b';
-  var supportUrl = '711cc.soporte_waoo';
+  var supportUrl = '444e4.soporte';
   var userAvatarSrc = '';
   var userId = '';
   function init(chan,asid) {
@@ -238,7 +237,11 @@ var misendbird = (function () {
     privUrl = can;
   }
   function reconnect() {
+    sendbird.disconnect();
     init(channelChat,assistantId);
+  }
+  function disconnect() {
+    sendbird.disconnect();
   }
   function preInit(nick) {
     sendbird.init({
@@ -267,6 +270,7 @@ var misendbird = (function () {
     reconnect: reconnect,
     obtenerDireccionCanalChat: obtenerDireccionCanalChat,
     preInit: preInit,
-    setChannel: setChannel
+    setChannel: setChannel,
+    disconnect: disconnect
   };
 })();
