@@ -142,7 +142,7 @@ var misendbird = (function () {
   sendbird.events.onMessageReceived = function(obj) {
     if($('.whatschat').length){
       appendToChat(obj.message,obj.user.guest_id);
-      scrollContainer('.whatschat');
+      scrollContainer('.chat_box');
     }
     else {
       if(obj.user.guest_id!=userId){
