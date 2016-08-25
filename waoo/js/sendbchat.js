@@ -10,6 +10,7 @@ var misendbird = (function () {
   var userId = '';
   function init(chan,asid) {
     userId = window.localStorage.getItem("nickname");
+    userId = userId.toLowerCase();
     channelChat = chan;
     sendbird.init({
       "app_id": appId,
