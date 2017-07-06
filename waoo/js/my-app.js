@@ -23,8 +23,9 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: false
 });
 
-function cargaPagina(url,num){
+function cargaPagina(url,num,params){
 	var loggedin = window.localStorage.getItem("nickname");
+  params = typeof params !== 'undefined' ? params : {};
 	if(!loggedin) myApp.popup(".popup-login");
 	else{
 		mainView.router.loadPage(url+"?"+(Math.floor((Math.random() * 1000) + 1)));
@@ -65,7 +66,30 @@ function cargaPagina(url,num){
         });
         break;
       case 3:
-        setTimeout(function(){cargaSolicitudesUsuario(loggedin);},1000);
+        setTimeout(function(){
+          if (params.id) {
+            if (params.isAssistant) {
+              listarSolicitudesSinAsignarDiv('dirpc');
+            }
+            else {
+              cargaSolicitudesUsuario(loggedin);
+            }
+            setTimeout(function () {
+              if (params.isAssistant) {
+                verDetalleSolicitud(params.id,'detsols_'+params.id,1);
+              }
+              else if (params.viewSolution) {
+                verDetalleSolicitud(params.id,'detsols_'+params.id,1);
+              }
+              else {
+                verDetalleSolicitud(params.id,'detsols_'+params.id);
+              }
+            },1000);
+          }
+          else {
+            cargaSolicitudesUsuario(loggedin);
+          }
+        },1000);
         break;
       case 4:
         setTimeout(function(){cargarDatosUsuario();},1000);
@@ -83,12 +107,34 @@ function cargaPagina(url,num){
       case 8:
         setTimeout(function(){historialTrabajosAceptados();},1000);
         break;
+      case 9:
+        setTimeout(function(){consultarTokens();},1000);
+        break;
       case 10:
         setTimeout(function(){
           mercpagoui.initEvents();
           llenarSelectMes('.js-expirationMonth');
           llenarSelectAnio('.js-expirationYear');
+          mercpagoui.initEvents();
           consultarTokens();
+          if (params.tokens) {
+            var ajax = $.ajax({
+              type : 'post',
+              url : waooserver+"/usuarios/cantidadTokens",
+              dataType: "json",
+              data : {nickname:window.localStorage.getItem("nickname")}
+            });
+            (function (extraParams) {
+              ajax.done(function (resp) {
+                var actual = resp.msg * 1;
+                var required = extraParams.tokens - actual;
+                var totalValue = required * 1000;
+                $('.js-tokens-default').val(required);
+                $('.js-checkout-total').html('$ '+totalValue);
+                $('.js-id-solicitud').val(extraParams.idpreciotrabajo);
+              });
+            })(params);
+          }
         },1000);
         break;
       default:
@@ -133,21 +179,24 @@ function llenarSelectMes(id) {
   $(id).html(str);
 }
 
-function llenarSelect2(inicio,final) {
+function llenarSelect2(inicio,final,seleccionado) {
+  seleccionado = typeof seleccionado !== 'undefined' ? seleccionado : 0;
   var str = "";
   for (var i = inicio; i <= final; i++) {
-    str += "<option value='"+(i<10?'0':'')+i+"'>"+(i<10?'0':'')+i+"</option>";
+    str += "<option value='"+(i<10?'0':'')+i+"'"+(seleccionado==i ? " selected":"")+">"+(i<10?'0':'')+i+"</option>";
   }
   return str;
 }
 
 function llenarSelectMes2(id) {
-  var str = llenarSelect2(1,12);
+  var fd = new Date();
+  var str = llenarSelect2(1,12,fd.getMonth()+1);
   $(id).html(str);
 }
 
 function llenarSelectDias(id) {
-  var str = llenarSelect2(1,31);
+  var fd = new Date();
+  var str = llenarSelect2(1,31,fd.getDate());
   $(id).html(str);
 }
 
@@ -199,6 +248,7 @@ jQuery(document).ready(function() {
 
 	cargarBancoSelect("banco");
 	listaChecksMateria("matsreg");
+  $(document).off('submit','.js-pago-efectivo').on('submit','.js-pago-efectivo',procesaPagoEfectivo);
   //lib raty
   $.fn.raty.defaults.path = './images';
 
